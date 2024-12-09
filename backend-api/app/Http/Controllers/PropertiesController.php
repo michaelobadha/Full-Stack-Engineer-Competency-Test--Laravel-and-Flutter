@@ -10,11 +10,11 @@ class PropertiesController extends Controller
     //
     public function index()
     {
-        $properties = Properties::all();
+        $property = Properties::all();
         return response()->json([
             'status' => true,
             'message' => 'Properties retrieved successfully',
-            'data' => $properties
+            'data' => $property
         ], 200);
     }
 
@@ -24,7 +24,7 @@ class PropertiesController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Property found successfully',
-            'data' => $customer
+            'data' => $property
         ], 200);
     }
 
@@ -45,11 +45,11 @@ class PropertiesController extends Controller
             ], 422);
         }
 
-        $customer = Customer::create($request->all());
+        $property = Properties::create($request->all());
         return response()->json([
             'status' => true,
             'message' => 'Customer created successfully',
-            'data' => $customer
+            'data' => $property
         ], 201);
     }
 
@@ -68,13 +68,13 @@ class PropertiesController extends Controller
             ], 422);
         }
 
-        $customer = Customer::findOrFail($id);
-        $customer->update($request->all());
+        $property = Customer::findOrFail($id);
+        $property->update($request->all());
 
         return response()->json([
             'status' => true,
-            'message' => 'Customer updated successfully',
-            'data' => $customer
+            'message' => 'Property updated successfully',
+            'data' => $property
         ], 200);
     }
 
@@ -85,7 +85,7 @@ class PropertiesController extends Controller
         
         return response()->json([
             'status' => true,
-            'message' => 'Customer deleted successfully'
+            'message' => 'Property deleted successfully'
         ], 204);
     }
 }
