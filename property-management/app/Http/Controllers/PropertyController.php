@@ -7,59 +7,46 @@ use Illuminate\Http\Request;
 
 class PropertyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    // List all properties
     public function index()
     {
-        //
+        return response()->json(Property::all());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Store a new property
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'price' => 'required|numeric',
+        ]);
+
+        $property = Property::create($request->all());
+
+        return response()->json($property, 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Property $property)
+    // Show a single property
+    public function show($id)
     {
-        //
+        $property = Property::findOrFail($id);
+        return response()->json($property);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Property $property)
+    // Update a property
+    public function update(Request $request, $id)
     {
-        //
+        $property = Property::findOrFail($id);
+        $property->update($request->all());
+
+        return response()->json($property);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Property $property)
+    // Delete a property
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Property $property)
-    {
-        //
+        Property::destroy($id);
+        return response()->json(['message' => 'Property deleted']);
     }
 }
