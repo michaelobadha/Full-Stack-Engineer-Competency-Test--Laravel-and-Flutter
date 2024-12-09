@@ -7,4 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Property extends Model
 {
     //
+    protected $fillable = ['name', 'location', 'price', 'description'];
+
 }
