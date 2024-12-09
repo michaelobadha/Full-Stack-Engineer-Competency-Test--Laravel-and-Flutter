@@ -29,7 +29,7 @@ Make sure you have the following installed:
 
 2. Clone the Repository
 
-git clone https://github.com/your-username/property-management-api.git
+git clone https://github.com/michaelobadha/Full-Stack-Engineer-Competency-Test--Laravel-and-Flutter.git
 cd property-management-api
 
 3. Install Dependencies
