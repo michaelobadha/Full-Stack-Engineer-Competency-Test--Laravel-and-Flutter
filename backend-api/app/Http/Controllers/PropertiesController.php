@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Validator;
 
 class PropertiesController extends Controller
 {
-    //
     public function index()
     {
         $property = Properties::all();
@@ -32,9 +31,9 @@ class PropertiesController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'email',
-            'location',
-            'price',
+            'email' => 'required|string|email|max:255|unique:properties,email',
+            'location' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
         ]);
 
         if ($validator->fails()) {
@@ -48,7 +47,7 @@ class PropertiesController extends Controller
         $property = Properties::create($request->all());
         return response()->json([
             'status' => true,
-            'message' => 'Customer created successfully',
+            'message' => 'Property created successfully',
             'data' => $property
         ], 201);
     }
@@ -57,7 +56,9 @@ class PropertiesController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:customers,email,' . $id,
+            'email' => 'required|string|email|max:255|unique:properties,email,' . $id,
+            'location' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
         ]);
 
         if ($validator->fails()) {
@@ -68,7 +69,7 @@ class PropertiesController extends Controller
             ], 422);
         }
 
-        $property = Customer::findOrFail($id);
+        $property = Properties::findOrFail($id);
         $property->update($request->all());
 
         return response()->json([
@@ -80,12 +81,12 @@ class PropertiesController extends Controller
 
     public function destroy($id)
     {
-        $customer = Customer::findOrFail($id);
-        $customer->delete();
-        
+        $property = Properties::findOrFail($id);
+        $property->delete();
+
         return response()->json([
             'status' => true,
             'message' => 'Property deleted successfully'
-        ], 204);
+        ], 200);
     }
 }
