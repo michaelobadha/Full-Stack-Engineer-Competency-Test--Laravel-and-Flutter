@@ -1,16 +1,43 @@
 # frontend
 
-A new Flutter project.
+Property Management System Frontend
 
-## Getting Started
+This is the frontend application for the Property Management System built with Flutter. It interacts with a backend API (developed using Laravel) to manage property data, including adding, editing, and deleting properties.
+# Table of Contents
 
-This project is a starting point for a Flutter application.
+    Features
+    Tech Stack
+    Getting Started
+        Prerequisites
+        Installation
+        Running the App
+    Project Structure
+    API Endpoints
+    Contributing
+    License
 
-A few resources to get you started if this is your first Flutter project:
+# Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+    View a list of all properties.
+    Add new properties using a form.
+    Edit existing properties.
+    Delete properties from the system.
+    Integration with a Laravel-based backend API.
+    State management using Bloc.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Tech Stack
+
+    Framework: Flutter
+    State Management: Bloc
+    HTTP Client: Dio
+    UI Design: Material Design
+    Backend API: Laravel (separate repository)
+
+Getting Started
+Prerequisites
+
+# Ensure you have the following installed:
+
+    Flutter SDK: Install Flutter
+    Dart: Comes with Flutter SDK
+    A code editor like Visual Studio Code or Android Studio
